@@ -4,26 +4,49 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Log In</title>
-
 <style>
-header{
-  text-align:center;
-  height:100px;
-  background: url("building.jpg");
-  background-attachment: scroll;
+* {box-sizing: border-box;}
+body{
+margin:0;
 }
-header,footer{
-width:100%;
-color:red;
-font-size:30px;
+
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
 }
-#log{
-  text-align:center;
-  width: 200px;
-  border: 10px solid black;
-  padding: 30px;
-  margin: 20px;
-  display: inline-block;
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.log{
+margin-top:20px;
+width:400px;
+padding:40px;
+height:250px;
+border:5px solid black;
+margin-left:40%;
+}
+
+
+footer{
+down:0%;
+margin-top:20px;
+border:5px solid #f1f1f1;
 }
 </style>
 
@@ -76,6 +99,9 @@ int temp=1;
          }
  %>
  <%        
+	Cookie c=new Cookie("uname","");
+	c.setMaxAge(0);
+	response.addCookie(c);
     name = request.getParameter("uname");
  	pass=request.getParameter("pass");
  	int n=4;
@@ -106,8 +132,10 @@ int temp=1;
         <%
     }
  %>
-<header> <center>Virtusa</center> </header>
-<div id="log">
+<div class="header">
+  <a  class="logo">VIRTUSA</a>
+</div> 
+<div class="log" >
 <h1>LOG IN</h1>
 <form action="#" method="post">
 <input type="text" minlength=6 style="text-align:center;margin:5px" placeholder="Username" name="uname" value=<% if(name!=null){ %><%= name%><%} %>><br>
